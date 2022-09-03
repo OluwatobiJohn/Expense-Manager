@@ -10,6 +10,7 @@ import Profile from "./Profile";
 import Info from "./Info";
 
 const MainOverview = () => {
+  const [currentUser, setCurrentUser] = useState();
   const [openAddMenu, setOpenAddMenu] = useState(false);
   const [status, setStatus] = useState("expenseManager");
   const [loading, setLoading] = useState(false);
@@ -25,8 +26,10 @@ const MainOverview = () => {
       });
   };
   useEffect(() => {
+
     setLoading(true);
     auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
       if (!user) navigate("/login");
       setLoading(false);
     });

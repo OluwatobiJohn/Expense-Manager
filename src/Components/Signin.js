@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { Container, Row, Card, CardBody, Input } from "reactstrap";
 import PasswordInput from "./PasswordInput";
@@ -80,16 +80,16 @@ const Signin = () => {
                   </button>
                   <p style={{ fontSize: "14px" }}>
                     Have an Account?{" "}
-                    <a href="/login" style={{ textDecoration: "none" }}>
-                      <span
-                        style={{
-                          borderBottom: "2px solid hsl(214, 35%, 21%)",
-                          color: "black",
-                        }}
-                      >
-                        Login
-                      </span>
-                    </a>
+                    <NavLink to="/login" style={{ textDecoration: "none" }}>
+                    <span
+                      style={{
+                        borderBottom: "2px solid hsl(214, 35%, 21%)",
+                        color: "black",
+                      }}
+                    >
+                      Login
+                    </span>
+                  </NavLink>
                   </p>
                 </CardBody>
               </Card>
