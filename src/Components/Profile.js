@@ -17,7 +17,7 @@ const Profile = () => {
 
   const update = async (file, currentUser) => {
     setAddLoading(true);
-    const fileRef = ref(storage, "profile" + ".png");
+    const fileRef = ref(storage, currentUser.uid + ".png");
     const snapshot = await uploadBytes(fileRef, file);
     const photoURL = await getDownloadURL(fileRef);
     updateProfile(currentUser, {
@@ -66,7 +66,9 @@ const Profile = () => {
     z.style.display = "none";
     b.style.display = "none";
 
-    setFullName(currentUser.displayName)
+    setNewFullName("");
+    setPhoto();
+    setFullName(currentUser.displayName);
     setprofilePhoto(currentUser.photoURL);
     setEmail(currentUser.email);
   };
@@ -186,7 +188,7 @@ const Profile = () => {
           }}
         >
           {addLoading ? (
-            <Spinner color="primary">Loading...</Spinner>
+            <Spinner color="primary">Updating...</Spinner>
           ) : (
             "Update"
           )}
